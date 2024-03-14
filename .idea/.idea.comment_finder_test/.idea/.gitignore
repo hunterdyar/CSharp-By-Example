@@ -6,3 +6,8 @@
 /modules.xml
 /contentModel.xml
 /projectSettingsUpdater.xml
+# GitHub Copilot persisted chat sessions
+/copilot/chatSessions
+
+/obj/
+/bin/
