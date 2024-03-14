@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "ugjSuvXYkQEzG+SYIJVyGXxbjrX1PIodO2WL4KTToo2HUpi29s44AZwzBMDnjBEjiRTBMGdUsY8pZ3q3k/pA7Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Chatham University\\SynologyDrive\\Projects\\CSharp\\comment_finder_test\\comment_finder_test\\comment_finder_test.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Chatham University\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.4\\microsoft.codeanalysis.analyzers.3.3.4.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\microsoft.codeanalysis.common\\4.9.2\\microsoft.codeanalysis.common.4.9.2.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.9.2\\microsoft.codeanalysis.csharp.4.9.2.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\system.reflection.metadata\\8.0.0\\system.reflection.metadata.8.0.0.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.27\\microsoft.netcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.27\\microsoft.windowsdesktop.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.27\\microsoft.aspnetcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\Chatham University\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.27\\microsoft.netcore.app.host.win-x64.6.0.27.nupkg.sha512"
+  ],
+  "logs": []
+}
