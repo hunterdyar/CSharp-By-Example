@@ -131,3 +131,7 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+## Generated Site Files that I am keeping in the project root dir instead of bin during while testing.
+/build/
+/Build/

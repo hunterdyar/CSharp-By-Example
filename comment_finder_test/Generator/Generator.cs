@@ -9,26 +9,38 @@ using Stubble.Core.Builders;
 public class Generator
 {
 	private readonly SiteDescription _description;
-	private string exampleTemplatePath;
+	private DirectoryInfo exampleTemplateDir;
 	private string indexTemplatePath;
-	private string buildDir = "S:\\csharp\\CSharp-Comments-To-Website\\comment_finder_test\\bin\\Debug\\net6.0\\builds";
-	
-	public Generator(SiteDescription description, string templateDir)
+	private DirectoryInfo buildDir;
+	public Generator(SiteDescription description, string templateDir, string buildDir)
 	{
-		exampleTemplatePath = templateDir + "/example.mustache";
+		this.buildDir = new DirectoryInfo(buildDir);
+
+		string exampleTemplatePath = templateDir;
+		exampleTemplateDir = new DirectoryInfo(exampleTemplatePath);
+		
 		_description = description;
 	}
 
 	public async Task Generate()
 	{
 		//first, copy all the files from static into build
+		CopyStaticToBuild();
 		GenerateIndex();
 		foreach (var example in _description.Examples)
 		{
 			await GenerateExample(example);
 		}
 	}
-	
+
+	private void CopyStaticToBuild()
+	{
+		foreach (var sFile in buildDir.GetFiles())
+		{
+			Directory.Move(sFile.FullName, buildDir + sFile.Name);
+		}	
+	}
+
 	async Task GenerateIndex()
 	{ var stubble = new StubbleBuilder().Build();
 		
@@ -56,7 +68,7 @@ public class Generator
 		
 		
 		//obj = 
-		using (StreamReader streamReader = new StreamReader(exampleTemplatePath, Encoding.UTF8))
+		using (StreamReader streamReader = new StreamReader(exampleTemplateDir+"/example.mustache", Encoding.UTF8))
 		{
 			var obj = examplePage;
 			var content = await streamReader.ReadToEndAsync();

@@ -22,7 +22,7 @@ await p.Parse(file);
 site.Examples.Add(page);
 //end example
 
-Generator g = new Generator(site,"../../../Templates/");
+Generator g = new Generator(site,"../../../Templates/","../../../build");
 await g.Generate();
 
 Console.Write($"completed {p.Page.Scripts.Count} examples.");
