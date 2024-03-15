@@ -7,23 +7,25 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-var code = new StreamReader("../../../code_to_analyze/test.cs");
-
-SyntaxTree tree = CSharpSyntaxTree.ParseText(code.ReadToEnd());
+string file = "../../../code_to_analyze/test.cs";
 //var comments = root.DescendantTrivia().OfType<SyntaxTrivia>().Where(st=>!st.IsKind(SyntaxKind.WhitespaceTrivia) && !st.IsKind(SyntaxKind.EndOfLineTrivia)).ToList();
 //var nodes = root.DescendantNodes(x => true, true).ToList();
 
-var walker = new Walker();
-var newTree = walker.Visit(tree.GetRoot());
-var newCode = newTree.ToFullString();
-foreach (var c in walker.Comments)
-{
-Console.Write(c.Comment);
-}
-Console.WriteLine("-----");
-Console.Write(newCode);
 
+var site = new SiteDescription();
+//foreach example in code directory...
+var page = new ExamplePage();
+Parser p = new Parser(page);
+//foreach script in example directory
+await p.Parse(file);
+//end script
+site.Examples.Add(page);
+//end example
 
+Generator g = new Generator(site,"../../../Templates/");
+await g.Generate();
+
+Console.Write($"completed {p.Page.Scripts.Count} examples.");
 //the main challenge is that using CodeAnalysis gives us a tree walker to use, but separating our 'docs' from the code will require more linear, less recursive approach.
 //luckily, extending TreeWalker gives us a walk in the correct order. So we need to walk the tree, and for every node that is a comment, we can add it to a docs list, with a reference to it's associated token.
 //then, we render the code and render the comments.... and somehow find that relevant token to figure out what group or node we belong to? I think?
