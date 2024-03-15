@@ -11,19 +11,5 @@ public class ExampleScript : object
 	{
 		Segments = segments;
 		file = scriptFile;
-
-		for (var i = 0; i < segments.Count; i++)
-		{
-			var s = segments[i];
-			if (i < segments.Count-1)
-			{
-				s.NextExample = segments[i + 1];
-			}
-
-			if (i > 0)
-			{
-				s.PrevExample = segments[i - 1];
-			}
-		}
 	}
 }

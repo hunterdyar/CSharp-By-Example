@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Go by Example</title>
+    <title>C# by Example</title>
     <link rel=stylesheet href="site.css">
 </head>
 <body>
 <div id="intro">
-    <h2><a href="./">Go by Example</a></h2>
+    <h2><a href="./">C# by Example</a></h2>
     <p>
         <a href="https://go.dev">Go</a> is an
         open source programming language designed for
@@ -19,16 +19,16 @@
     </p>
 
     <p>
-        <em>Go by Example</em> is a hands-on introduction
-        to Go using annotated example programs. Check out
+        <em>C# by Example</em> is a hands-on introduction
+        to C# using annotated example programs. Check out
         the <a href="hello-world">first example</a> or
         browse the full list below.
     </p>
 
     <ul>
-        {{range .}}
-        <li><a href="{{.ID}}">{{.Name}}</a></li>
-        {{end}}
+        {{#Examples}}
+        <li><a href="{{FileName}}">{{Name}}</a></li>
+        {{/Examples}}
     </ul>
     {{ template "footer" }}
 </div>

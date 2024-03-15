@@ -9,22 +9,29 @@ using Stubble.Core.Builders;
 public class Generator
 {
 	private readonly SiteDescription _description;
-	private DirectoryInfo exampleTemplateDir;
-	private string indexTemplatePath;
-	private DirectoryInfo buildDir;
-	public Generator(SiteDescription description, string templateDir, string buildDir)
+	private readonly DirectoryInfo _templateDir;
+	private readonly DirectoryInfo _buildDir;
+	private readonly DirectoryInfo _staticDir;
+	private string IndexFile => Path.Join(_buildDir.FullName, "/index.html");
+	public Generator(SiteDescription description, string templateDir, string staticDir, string buildDir)
 	{
-		this.buildDir = new DirectoryInfo(buildDir);
-
+		this._buildDir = new DirectoryInfo(buildDir);
+		this._staticDir = new DirectoryInfo(staticDir);
 		string exampleTemplatePath = templateDir;
-		exampleTemplateDir = new DirectoryInfo(exampleTemplatePath);
+		_templateDir = new DirectoryInfo(exampleTemplatePath);
 		
 		_description = description;
 	}
 
+	private string GetFilePath(ExamplePage page)
+	{
+		return Path.Join(_buildDir.FullName, page.ID + ".html");
+	}
+	
 	public async Task Generate()
 	{
 		//first, copy all the files from static into build
+		ClearFiles();
 		CopyStaticToBuild();
 		GenerateIndex();
 		foreach (var example in _description.Examples)
@@ -33,23 +40,42 @@ public class Generator
 		}
 	}
 
+	private void ClearFiles()
+	{
+		if (File.Exists(IndexFile))
+		{
+			File.Delete(IndexFile);
+		}
+		foreach(var example in _description.Examples)
+		{
+			var path = GetFilePath(example);
+			if (File.Exists(path))
+			{
+				File.Delete(path);
+			}
+		}
+	}
+
 	private void CopyStaticToBuild()
 	{
-		foreach (var sFile in buildDir.GetFiles())
+		foreach (var sFile in _staticDir.GetFiles())
 		{
-			Directory.Move(sFile.FullName, buildDir + sFile.Name);
+			//we already deleted the destFile
+			var destFile = Path.Join(_buildDir.FullName, sFile.Name);
+			Directory.Move(sFile.FullName, destFile);
 		}	
 	}
 
 	async Task GenerateIndex()
 	{ var stubble = new StubbleBuilder().Build();
 		
-    	using (StreamReader streamReader = new StreamReader(indexTemplatePath, Encoding.UTF8))
+    	using (StreamReader streamReader = new StreamReader(_templateDir+"/index.mustache", Encoding.UTF8))
     	{
     		string content = await streamReader.ReadToEndAsync();
     		string? output = await stubble.RenderAsync(content, _description);
-    		//todo: save output to /index
-    	}	
+            await File.WriteAllTextAsync(IndexFile, output);
+
+        }	
 	}
 
 	public Helpers GetHelpers()
@@ -68,15 +94,12 @@ public class Generator
 		
 		
 		//obj = 
-		using (StreamReader streamReader = new StreamReader(exampleTemplateDir+"/example.mustache", Encoding.UTF8))
+		using (StreamReader streamReader = new StreamReader(_templateDir+"/example.mustache", Encoding.UTF8))
 		{
 			var obj = examplePage;
 			var content = await streamReader.ReadToEndAsync();
-			var output = await stubble.RenderAsync(content, obj);
-
-			
-			//todo: save output to /examples
-			File.WriteAllTextAsync(buildDir+"/"+examplePage.Name+".html",output);
+			var output = await stubble.RenderAsync(content, examplePage);
+			await File.WriteAllTextAsync(GetFilePath(examplePage),output);
 		}
 	}
 	

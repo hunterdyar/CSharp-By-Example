@@ -10,8 +10,6 @@ public class ExampleSegment
 	public bool IsLeadingSegment;
 	public string CodeRendered;
 	public string DocsRendered;
-	public ExampleSegment NextExample;
-	public ExampleSegment PrevExample;
 
 	public void Render()
 	{

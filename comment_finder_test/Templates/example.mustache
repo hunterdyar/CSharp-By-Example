@@ -2,26 +2,26 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Go by Example: {{Name}}</title>
+    <title>C# by Example: {{Name}}</title>
     <link rel=stylesheet href="site.css">
 </head>
 <script>
     onkeydown = (e) => {
         {{if PrevExample}}
         if (e.key == "ArrowLeft") {
-            window.location.href = '{{PrevExample.ID}}';
+            window.location.href = '{{PrevExample.FileName}}';
         }
         {{end}}
         {{if NextExample}}
         if (e.key == "ArrowRight") {
-            window.location.href = '{{NextExample.ID}}';
+            window.location.href = '{{NextExample.FileName}}';
         }
         {{end}}
     }
 </script>
 <body>
 <div class="example" id="{{ID}}">
-    <h2><a href="./">CSharp by Example</a>: {{Name}}</h2>
+    <h2><a href="./">C# by Example</a>: {{Name}}</h2>
 {{#Scripts}}
 <Table> 
 {{#Segments}}
@@ -39,11 +39,11 @@
 {{/Scripts}}
     <hr />
 {{end}}    
-{{if NextExample}}
+{{#NextExample}}
     <p class="next">
         Next example: <a href="{{NextExample.ID}}">{{NextExample.Name}}</a>.
     </p>
-{{end}}
+{{/NextExample}}
 {{ template "footer" }}
 </div>
 </body>

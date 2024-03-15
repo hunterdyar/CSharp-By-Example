@@ -11,7 +11,7 @@ string file = "../../../code_to_analyze/test.cs";
 //var comments = root.DescendantTrivia().OfType<SyntaxTrivia>().Where(st=>!st.IsKind(SyntaxKind.WhitespaceTrivia) && !st.IsKind(SyntaxKind.EndOfLineTrivia)).ToList();
 //var nodes = root.DescendantNodes(x => true, true).ToList();
 
-
+//paring
 var site = new SiteDescription();
 //foreach example in code directory...
 var page = new ExamplePage();
@@ -22,7 +22,10 @@ await p.Parse(file);
 site.Examples.Add(page);
 //end example
 
-Generator g = new Generator(site,"../../../Templates/","../../../build");
+site.SetNextPrevious();
+//end parsing whole site.
+
+Generator g = new Generator(site,"../../../Templates/","../../../static","../../../build");
 await g.Generate();
 
 Console.Write($"completed {p.Page.Scripts.Count} examples.");
