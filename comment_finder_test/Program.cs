@@ -1,11 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System;
-using System.IO;
 using comment_finder_test;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 string file = "../../../code_to_analyze/test.cs";
 //var comments = root.DescendantTrivia().OfType<SyntaxTrivia>().Where(st=>!st.IsKind(SyntaxKind.WhitespaceTrivia) && !st.IsKind(SyntaxKind.EndOfLineTrivia)).ToList();
