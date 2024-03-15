@@ -76,7 +76,7 @@ public class Parser
 					else
 					{
 						var segment = segments[^1];
-						segment.Code += segment.Code.Length != 0 ?  "/n" : "";
+						segment.Code += segment.Code.Length != 0 ?  "\n" : "";
 						segment.Code += line;
 					}
 
@@ -91,6 +91,10 @@ public class Parser
 			}
 		}
 
+		foreach (var segment in segments)
+		{	
+			segment.Render();
+		}
 		_page.AddScript(new ExampleScript(segments,scriptFile));
 		
 	}

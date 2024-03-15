@@ -43,7 +43,7 @@ public class Generator
 	public Helpers GetHelpers()
 	{
 		var helpers = new Helpers();
-		helpers.Register("Name", (context) => context.Lookup<ExamplePage>("Name").Name);
+		//helpers.Register("Name", (context) => context.Lookup<ExamplePage>("Name").Name);
 		return helpers;
 	}
 	//Generate a single example
@@ -58,8 +58,10 @@ public class Generator
 		//obj = 
 		using (StreamReader streamReader = new StreamReader(exampleTemplatePath, Encoding.UTF8))
 		{
+			var obj = examplePage;
 			var content = await streamReader.ReadToEndAsync();
-			var output = await stubble.RenderAsync(content, examplePage);
+			var output = await stubble.RenderAsync(content, obj);
+
 			
 			//todo: save output to /examples
 			File.WriteAllTextAsync(buildDir+"/"+examplePage.Name+".html",output);

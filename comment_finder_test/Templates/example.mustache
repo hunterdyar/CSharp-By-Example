@@ -2,57 +2,49 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Go by Example: {{.Name}}</title>
+    <title>Go by Example: {{Name}}</title>
     <link rel=stylesheet href="site.css">
 </head>
 <script>
     onkeydown = (e) => {
-        {{if .PrevExample}}
+        {{if PrevExample}}
         if (e.key == "ArrowLeft") {
-            window.location.href = '{{.PrevExample.ID}}';
+            window.location.href = '{{PrevExample.ID}}';
         }
         {{end}}
-        {{if .NextExample}}
+        {{if NextExample}}
         if (e.key == "ArrowRight") {
-            window.location.href = '{{.NextExample.ID}}';
+            window.location.href = '{{NextExample.ID}}';
         }
         {{end}}
     }
 </script>
 <body>
-<div class="example" id="{{.ID}}">
-    <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
-{{range .Scripts}}
-    
-{{range .Segments}}
-<table>
-{{range .}}
+<div class="example" id="{{ID}}">
+    <h2><a href="./">CSharp by Example</a>: {{Name}}</h2>
+{{#Scripts}}
+<Table> 
+{{#Segments}}
 <tr>
     <td class="docs">
-        {{.DocsRendered}}
+        {{DocsRendered}}
     </td>
-<td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
-<img
-        title="Copy code" src="clipboard.png" class="copy"/>{{end}}
-{{.CodeRendered}}
+<td class="code{{if .CodeEmpty}} empty{{end}}{{if CodeLeading}} leading{{end}}">
+{{end}}
+{{{CodeRendered}}}
 </td>
 </tr>
-{{end}}
+{{/Segments}}
 </table>
-{{end}}
+{{/Scripts}}
     <hr />
 {{end}}    
-{{if .NextExample}}
+{{if NextExample}}
     <p class="next">
-        Next example: <a href="{{.NextExample.ID}}">{{.NextExample.Name}}</a>.
+        Next example: <a href="{{NextExample.ID}}">{{NextExample.Name}}</a>.
     </p>
 {{end}}
 {{ template "footer" }}
 </div>
-<script>
-    var codeLines = [];
-        {{range .Segs}}{{range .}}codeLines.push('{{js .CodeForJs}}');{{end}}{{end}}
-</script>
-<script src="site.js" async></script>
 </body>
 </html>
