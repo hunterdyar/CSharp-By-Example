@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpByExample", "comment_finder_test\CSharpByExample.csproj", "{3B2B6B72-CF0E-43F4-A419-FE547BC9FFD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpByExample", "csharpbyexample\CSharpByExample.csproj", "{3B2B6B72-CF0E-43F4-A419-FE547BC9FFD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
