@@ -15,14 +15,21 @@ public static class SiteParser
 			PageParser pageParser = new PageParser(page);
 			foreach (var script in exampleDir.GetFiles())
 			{
-				//todo: check if this is a script of metadata/ignored, via some syntax of some kind? 
-				//wait till we need that to bother implementing it.
-				await pageParser.Parse(script.FullName);
+				if (script.Extension == ".yaml")
+				{
+					await pageParser.Meta(script);
+				}
+				else
+				{
+					//todo: check if this is a script of metadata/ignored, via some syntax of some kind? 
+					//wait till we need that to bother implementing it.
+					await pageParser.Parse(script.FullName);
+				}
 			}
 			site.Examples.Add(page);
 			
 		}
-		site.SetNextPrevious();
+		site.ExampleCleanup();
 		return site;
 	}
 

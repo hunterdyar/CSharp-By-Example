@@ -9,12 +9,12 @@
     onkeydown = (e) => {
         {{if PrevExample}}
         if (e.key == "ArrowLeft") {
-            window.location.href = '{{PrevExample.FileName}}';
+            window.location.href = '../{{PrevExample.FileName}}';
         }
         {{end}}
         {{if NextExample}}
         if (e.key == "ArrowRight") {
-            window.location.href = '{{NextExample.FileName}}';
+            window.location.href = '../{{NextExample.FileName}}';
         }
         {{end}}
     }
@@ -29,7 +29,7 @@
     <td class="docs">
         {{{DocsRendered}}}
     </td>
-<td class="code{{if .CodeEmpty}} empty{{end}}{{if CodeLeading}} leading{{end}}">
+<td class="code{{#CodeEmpty}} empty{{/CodeEmpty}}{{#CodeLeading}} leading{{/CodeLeading}}">
 {{end}}
 {{{CodeRendered}}}
 </td>
@@ -37,6 +37,14 @@
 {{/Segments}}
 </table>
 {{/Scripts}}
+    {{#Meta.HasLinks}}
+        <h3>Further:</h3>
+        <ul>
+        {{#Meta.Links}}
+            <li>{{.}}</li>        
+        {{/Meta.Links}}
+        </ul>
+    {{/Meta.HasLinks}}
     <hr />
 {{end}}    
 {{#NextExample}}
