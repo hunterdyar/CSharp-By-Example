@@ -1,7 +1,7 @@
 ﻿using ColorCode;
 using Markdig;
 
-namespace comment_finder_test;
+namespace CSharpByExample;
 
 public class ExampleSegment
 {

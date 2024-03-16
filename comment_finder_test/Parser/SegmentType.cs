@@ -1,4 +1,4 @@
-﻿namespace comment_finder_test;
+﻿namespace CSharpByExample;
 
 public enum SegmentType
 {

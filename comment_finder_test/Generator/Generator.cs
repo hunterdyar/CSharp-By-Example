@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Stubble.Helpers;
 
-namespace comment_finder_test;
+namespace CSharpByExample;
 using Stubble.Core.Builders;
 
 public class Generator

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace comment_finder_test;
+namespace CSharpByExample;
 
 public class PageParser
 {

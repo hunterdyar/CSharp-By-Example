@@ -1,6 +1,6 @@
 ﻿using Stubble.Core.Renderers;
 
-namespace comment_finder_test;
+namespace CSharpByExample;
 
 public class ExampleScript : object
 {
