@@ -9,12 +9,25 @@
 
     <ItemGroup>
       <PackageReference Include="ColorCode.HTML" Version="2.0.15" />
+      <PackageReference Include="Markdig" Version="0.36.2" />
       <PackageReference Include="Stubble.Core" Version="1.10.8" />
       <PackageReference Include="Stubble.Helpers" Version="2.0.1" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="build\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="code_to_analyze\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="code_to_analyze\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="code_to_analyze\**" />
     </ItemGroup>
 
 </Project>

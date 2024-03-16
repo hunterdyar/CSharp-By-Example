@@ -2,28 +2,15 @@
 
 using comment_finder_test;
 
-string file = "../../../code_to_analyze/test.cs";
+string exampleDir = "../../../code_to_analyze/";
 //var comments = root.DescendantTrivia().OfType<SyntaxTrivia>().Where(st=>!st.IsKind(SyntaxKind.WhitespaceTrivia) && !st.IsKind(SyntaxKind.EndOfLineTrivia)).ToList();
 //var nodes = root.DescendantNodes(x => true, true).ToList();
 
-//paring
-var site = new SiteDescription();
-//foreach example in code directory...
-var page = new ExamplePage();
-Parser p = new Parser(page);
-//foreach script in example directory
-await p.Parse(file);
-//end script
-site.Examples.Add(page);
-//end example
-
-site.SetNextPrevious();
-//end parsing whole site.
-
+var site = await SiteParser.Parse(exampleDir);//end parsing whole site.
 Generator g = new Generator(site,"../../../Templates/","../../../static","../../../build");
 await g.Generate();
 
-Console.Write($"completed {p.Page.Scripts.Count} examples.");
+Console.Write($"completed {site.Examples.Count} examples.");
 //the main challenge is that using CodeAnalysis gives us a tree walker to use, but separating our 'docs' from the code will require more linear, less recursive approach.
 //luckily, extending TreeWalker gives us a walk in the correct order. So we need to walk the tree, and for every node that is a comment, we can add it to a docs list, with a reference to it's associated token.
 //then, we render the code and render the comments.... and somehow find that relevant token to figure out what group or node we belong to? I think?

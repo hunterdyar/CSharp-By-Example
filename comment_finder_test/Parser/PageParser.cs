@@ -2,7 +2,7 @@
 
 namespace comment_finder_test;
 
-public class Parser
+public class PageParser
 {
 	public ExamplePage Page => _page;
 	private ExamplePage _page;
@@ -10,10 +10,11 @@ public class Parser
 	private Regex blockCommentPattern = new Regex(@"\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/");
 	private Regex singleLineCommentPattern = new Regex(@"(\/\/).*");
 	private Regex selectDoubleSlash = new Regex("^\t*(/)(/)");
-	private Regex dash = new Regex("/-+");
+	
+
 	
 	//Parses a script into an ExampleScript and adds it to a given Example Page.
-	public Parser(ExamplePage page)
+	public PageParser(ExamplePage page)
 	{
 		_page = page;
 	}
@@ -29,7 +30,7 @@ public class Parser
 			foreach (string l in script.Split('\n'))
 			{
 				///split by /n, but need to remove /r.
-				string line = l.TrimEnd();	
+				string line = l;//don't trim end, we use spaces on a new line to force p breaks.
 				if (line == "")
 				{
 					continue;
@@ -58,7 +59,7 @@ public class Parser
 					else
 					{
 						var segment = segments[^1];
-						segment.Doc += '\n' + trimmed;
+						segment.Doc += '\n' + trimmed;//We could add "|n  " (with spaces) to have the markdown renderer force new lines.... but this should be user controlled....
 					}
 
 					lastSeen = SegmentType.Doc;
@@ -96,6 +97,7 @@ public class Parser
 			segment.Render();
 		}
 		_page.AddScript(new ExampleScript(segments,scriptFile));
-		
+		//done! This class is basically a wraper for this function. We could just have a static function that returns the page.
+		//That parser is used on the SiteParser. The inconsistency could be considered bad, but I'll say this is demonstrating techniques as an educational exercise. Sure.
 	}
 }

@@ -2,7 +2,7 @@
 
 public class SiteDescription
 {
-	public string siteName;
+	public string SiteName;
 	public List<ExamplePage> Examples = new List<ExamplePage>();
 
 	public void SetNextPrevious()

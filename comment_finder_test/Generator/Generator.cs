@@ -58,12 +58,23 @@ public class Generator
 
 	private void CopyStaticToBuild()
 	{
-		foreach (var sFile in _staticDir.GetFiles())
+		if (_staticDir.Exists)
 		{
-			//we already deleted the destFile
-			var destFile = Path.Join(_buildDir.FullName, sFile.Name);
-			Directory.Move(sFile.FullName, destFile);
-		}	
+			foreach (var sFile in _staticDir.GetFiles())
+			{
+				//we already deleted the destFile
+				var destFile = Path.Join(_buildDir.FullName, sFile.Name);
+				Directory.Move(sFile.FullName, destFile);
+			}
+		}
+		else
+		{
+			//if we didn't find one but we anticipated finding one, warn us.
+			if (_staticDir.Name != "")
+			{
+				Console.WriteLine("No static directory to copy folders from. ");
+			}
+		}
 	}
 
 	async Task GenerateIndex()

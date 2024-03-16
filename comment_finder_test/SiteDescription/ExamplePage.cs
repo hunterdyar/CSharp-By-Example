@@ -7,7 +7,12 @@ public class ExamplePage : object
 	public string FileName => ID + ".html";
 	public ExamplePage NextExample;
 	public ExamplePage PrevExample;
-	
+
+	public ExamplePage(string name)
+	{
+		this.Name = name;
+		this.ID = Name.Trim().ToLower().Replace(' ', '-');
+	}
 	public List<ExampleScript> Scripts = new List<ExampleScript>();
 	public void AddScript(ExampleScript exampleScript)
 	{
