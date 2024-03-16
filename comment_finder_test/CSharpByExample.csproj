@@ -5,6 +5,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>comment_finder_test</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
