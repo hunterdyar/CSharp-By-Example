@@ -15,10 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="build\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Remove="code_to_analyze\**" />
     </ItemGroup>
 

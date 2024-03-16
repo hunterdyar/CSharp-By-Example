@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using Stubble.Core.Contexts;
+﻿using System.Text;
 using Stubble.Helpers;
 
 namespace comment_finder_test;
@@ -33,7 +31,7 @@ public class Generator
 		//first, copy all the files from static into build
 		ClearFiles();
 		CopyStaticToBuild();
-		GenerateIndex();
+		await GenerateIndex();
 		foreach (var example in _description.Examples)
 		{
 			await GenerateExample(example);
@@ -42,17 +40,24 @@ public class Generator
 
 	private void ClearFiles()
 	{
-		if (File.Exists(IndexFile))
+		ClearDirectories(_buildDir,false);	
+	}
+
+	void ClearDirectories(DirectoryInfo dir,bool deleteDir=true)
+	{
+		foreach (var d in dir.GetDirectories())
 		{
-			File.Delete(IndexFile);
+			ClearDirectories(d);
 		}
-		foreach(var example in _description.Examples)
+
+		foreach (var f in dir.GetFiles())
 		{
-			var path = GetFilePath(example);
-			if (File.Exists(path))
-			{
-				File.Delete(path);
-			}
+			File.Delete(f.FullName);	
+		}
+
+		if (deleteDir)
+		{
+			Directory.Delete(dir.FullName);
 		}
 	}
 
@@ -107,7 +112,6 @@ public class Generator
 		//obj = 
 		using (StreamReader streamReader = new StreamReader(_templateDir+"/example.mustache", Encoding.UTF8))
 		{
-			var obj = examplePage;
 			var content = await streamReader.ReadToEndAsync();
 			var output = await stubble.RenderAsync(content, examplePage);
 			await File.WriteAllTextAsync(GetFilePath(examplePage),output);

@@ -9,10 +9,8 @@ public class PageParser
 
 	private Regex blockCommentPattern = new Regex(@"\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/");
 	private Regex singleLineCommentPattern = new Regex(@"(\/\/).*");
-	private Regex selectDoubleSlash = new Regex("^\t*(/)(/)");
-	
+	private Regex selectDoubleSlash = new Regex("^\t* *(/)(/)");
 
-	
 	//Parses a script into an ExampleScript and adds it to a given Example Page.
 	public PageParser(ExamplePage page)
 	{
@@ -30,7 +28,7 @@ public class PageParser
 			foreach (string l in script.Split('\n'))
 			{
 				///split by /n, but need to remove /r.
-				string line = l;//don't trim end, we use spaces on a new line to force p breaks.
+				string line = l.Replace("\r","");//don't trim end, we use spaces on a new line to force p breaks.
 				if (line == "")
 				{
 					continue;
