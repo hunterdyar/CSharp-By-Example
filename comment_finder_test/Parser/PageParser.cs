@@ -11,6 +11,8 @@ public class PageParser
 	private Regex singleLineCommentPattern = new Regex(@"(\/\/).*");
 	private Regex selectDoubleSlash = new Regex("^\t* *(/)(/)");
 
+	public bool ReplaceTabsWithSpaces = true;
+
 	//Parses a script into an ExampleScript and adds it to a given Example Page.
 	public PageParser(ExamplePage page)
 	{
@@ -29,6 +31,11 @@ public class PageParser
 			{
 				///split by /n, but need to remove /r.
 				string line = l.Replace("\r","");//don't trim end, we use spaces on a new line to force p breaks.
+				if (ReplaceTabsWithSpaces)
+				{
+					//tabs may not render at consistent widths on different browsers/html renderers.
+					line = line.Replace("\t", "    ");
+				}
 				if (line == "")
 				{
 					continue;

@@ -21,9 +21,14 @@ public class Generator
 		_description = description;
 	}
 
-	private string GetFilePath(ExamplePage page)
+	private string GetExampleFilePath(ExamplePage page, bool createDir = true)
 	{
-		return Path.Join(_buildDir.FullName, page.ID + ".html");
+		string dir = Path.Join(_buildDir.FullName, page.ID);
+		if (createDir)
+		{
+			Directory.CreateDirectory(dir);
+		}
+		return Path.Join(dir + "/index.html");
 	}
 	
 	public async Task Generate()
@@ -108,13 +113,11 @@ public class Generator
 			.Configure(conf=>conf.AddHelpers(helpers))
 			.Build();
 		
-		
-		//obj = 
 		using (StreamReader streamReader = new StreamReader(_templateDir+"/example.mustache", Encoding.UTF8))
 		{
 			var content = await streamReader.ReadToEndAsync();
 			var output = await stubble.RenderAsync(content, examplePage);
-			await File.WriteAllTextAsync(GetFilePath(examplePage),output);
+			await File.WriteAllTextAsync(GetExampleFilePath(examplePage),output);
 		}
 	}
 	

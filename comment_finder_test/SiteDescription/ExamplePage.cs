@@ -4,7 +4,7 @@ public class ExamplePage : object
 {
 	public string Name = "Test";
 	public string ID = "_test";
-	public string FileName => ID + ".html";
+	public string FileName => ID + "/index.html";
 	public ExamplePage NextExample;
 	public ExamplePage PrevExample;
 

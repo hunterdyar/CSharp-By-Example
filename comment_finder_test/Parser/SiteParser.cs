@@ -20,7 +20,9 @@ public static class SiteParser
 				await pageParser.Parse(script.FullName);
 			}
 			site.Examples.Add(page);
+			
 		}
+		site.SetNextPrevious();
 		return site;
 	}
 
