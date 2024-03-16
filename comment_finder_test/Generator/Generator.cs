@@ -72,9 +72,10 @@ public class Generator
 		{
 			foreach (var sFile in _staticDir.GetFiles())
 			{
+				//todo: this won't copy sub-folders
 				//we already deleted the destFile
 				var destFile = Path.Join(_buildDir.FullName, sFile.Name);
-				Directory.Move(sFile.FullName, destFile);
+				File.Copy(sFile.FullName, destFile);
 			}
 		}
 		else
@@ -104,6 +105,14 @@ public class Generator
 		var helpers = new Helpers();
 		//helpers.Register("Name", (context) => context.Lookup<ExamplePage>("Name").Name);
 		return helpers;
+	}
+	private Dictionary<string,string> GetPartials()
+	{
+		var partials = new Dictionary<string, string>();
+
+		partials.Add("footer","footer.mustache");
+		
+		return partials;
 	}
 	//Generate a single example
 	public async Task GenerateExample(ExamplePage examplePage)
