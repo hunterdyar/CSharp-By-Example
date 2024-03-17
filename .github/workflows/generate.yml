@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore -o ./bin
     - name: Generate Site
-      run: ./csharpbyexample/bin/Debug/net6.0/CSharpByExample.exe
+      run: ./bin/CSharpByExample.exe
