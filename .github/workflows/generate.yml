@@ -27,4 +27,4 @@ jobs:
     - name: debug data! where am i?
       run: ls -a
     - name: Generate Site
-      run: ./bin/CSharpByExample.exe
+      run: .\bin\CSharpByExample
