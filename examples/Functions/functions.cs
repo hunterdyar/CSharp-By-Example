@@ -1,18 +1,7 @@
 public class FunctionExample {
     
     //Functions are named blocks of re-usable code.
-    //If a function belongs to a class, like this one does, we call it a 'Methods'. 
-    public void Test()
-    {
-        //you can define functions inside of other functions.  
-        //This isn't very common. It's a bit of a red flag. Is there another way to structure your code? Maybe a static Utilities class.
-        string SayHello()
-        {
-            return "Hello";
-        }
-        
-        Console.WriteLine(SayHello());
-    }
+    //If a function belongs to a class, like this one does, we call it a 'Method'.
     
     //Functions are defined much like variables: a return type then a name. After the name, we use parenthesis.
     //The parenthesis are how C# know's it's a function. We can put 'parameters' into functions to 
@@ -30,9 +19,29 @@ public class FunctionExample {
         Console.WriteLine(ouput);
     }
     
-    //
-    public int Sum(int a, int b)
+    //Functions can have any number of arguments.
+    public int SumFourThings(int a, int b,int c, int d)
     {
         return a+b;
     }
+
+    public void Test()
+    {
+        //When calling a function, we pass the data in using the order of the parameters.
+        //The names of parameters don't matter, but are important for readability.
+        int sum = SumFourThings(1,2,3,4);
+
+        //  
+
+        //You can define functions inside of other functions.
+        //This isn't very common.
+        //It's a bit of a red flag: is there another way to structure your code? Maybe a static Utilities class.
+        string SayHello()
+        {
+            return "Hello";
+        }
+
+        Console.WriteLine(SayHello());
+    }
+
 }
