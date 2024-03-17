@@ -10,21 +10,23 @@ public class Generator
 	private readonly DirectoryInfo _templateDir;
 	private readonly DirectoryInfo _buildDir;
 	private readonly DirectoryInfo _staticDir;
+	private readonly DirectoryInfo _draftsDir;
 	private DictionaryLoader _partialsLoader;
 	private string IndexFile => Path.Join(_buildDir.FullName, "/index.html");
 	public Generator(SiteDescription description, string templateDir, string staticDir, string buildDir)
 	{
 		this._buildDir = new DirectoryInfo(buildDir);
+		this._draftsDir = new DirectoryInfo(Path.Join(_buildDir.FullName, "/drafts"));
 		this._staticDir = new DirectoryInfo(staticDir);
 		string exampleTemplatePath = templateDir;
 		_templateDir = new DirectoryInfo(exampleTemplatePath);
-		
 		_description = description;
 	}
 
 	private string GetExampleFilePath(ExamplePage page, bool createDir = true)
 	{
-		string dir = Path.Join(_buildDir.FullName, page.ID);
+		var dirInfo = page.Meta.Draft ? _draftsDir : _buildDir;
+		string dir = Path.Join(dirInfo.FullName, page.ID);
 		if (createDir)
 		{
 			Directory.CreateDirectory(dir);
@@ -52,6 +54,7 @@ public class Generator
 		if (!Directory.Exists(_buildDir.FullName))
 		{
 			Directory.CreateDirectory(_buildDir.FullName);
+			Directory.CreateDirectory(_draftsDir.FullName);
 		}
 		else
 		{

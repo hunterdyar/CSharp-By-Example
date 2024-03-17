@@ -46,6 +46,7 @@ public class SwitchExample {
 
 		//  
 		//
+
 		//It's useful to use a switch statement when working with enums.
 		Sport sport = Sport.Football;
 		string objectShape = "";
@@ -65,6 +66,6 @@ public class SwitchExample {
 				objectShape = "Unknown";
 				break;
 		}
-		Console.WriteLine($"{sport.ToString()} uses a {objectShape} shape item.");
+		Console.WriteLine($"{sport.ToString()} uses	a {objectShape} shape item.");
 	}
 }
