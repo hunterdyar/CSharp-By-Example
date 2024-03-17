@@ -9,14 +9,12 @@ name: Generate Site By Example
 on:
   push:
     paths: 
-      - "/examples/**"
+      - "examples/**"
       - "**.mustache"
-    branches: [ "master" ]
   pull_request:
     paths: 
       - "examples/**"
       - "**.mustache"
-    branches: [ "master" ]
 
 permissions:
   contents: write
