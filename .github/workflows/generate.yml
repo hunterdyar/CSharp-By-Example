@@ -1,6 +1,9 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
+# Only generated when examples changes is fine for now, but better is to split the "make a build" and "generate the site" into two separate actions, and use an artifact or a cache or something to run it.
+# This is fine for now, but LISTEN... it could be better.
+
 name: Generate Site By Example
 
 on:
