@@ -29,4 +29,8 @@
       <None Remove="code_to_analyze\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="build\" />
+    </ItemGroup>
+
 </Project>
