@@ -9,9 +9,13 @@ on:
   pull_request:
     branches: [ "master" ]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +32,12 @@ jobs:
       run: ls -a bin
     - name: Generate Site
       run: ./bin/CSharpByExample
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    - name: Upload Artifacts
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: 'build'
+    - name: Deploy to Pages
+      id: deployment
+      uses: actions/deploy-pages@v3
