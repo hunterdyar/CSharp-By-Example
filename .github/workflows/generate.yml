@@ -25,6 +25,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore -o ./bin
     - name: debug data! where am i?
-      run: ls -a
+      run: ls -a bin
     - name: Generate Site
-      run: .\bin\CSharpByExample
+      run: ./bin/CSharpByExample
