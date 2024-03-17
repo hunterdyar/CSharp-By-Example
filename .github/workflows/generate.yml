@@ -22,9 +22,9 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: debug data! where am i?
-      run: ls -a
     - name: Build
       run: dotnet build --no-restore -o ./bin
+    - name: debug data! where am i?
+      run: ls -a
     - name: Generate Site
       run: ./bin/CSharpByExample.exe
