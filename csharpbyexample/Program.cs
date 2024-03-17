@@ -1,21 +1,47 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.CommandLine;
 using CSharpByExample;
+using YamlDotNet.Serialization.ObjectGraphTraversalStrategies;
 
-string exampleDir = "../../../code_to_analyze/";
-//var comments = root.DescendantTrivia().OfType<SyntaxTrivia>().Where(st=>!st.IsKind(SyntaxKind.WhitespaceTrivia) && !st.IsKind(SyntaxKind.EndOfLineTrivia)).ToList();
-//var nodes = root.DescendantNodes(x => true, true).ToList();
+public class CSharpByExampleSiteGenerator
+{
+	public static async Task<int> Main(params string[] args)
+	{
+		string exampleDir = "Examples";
+		string templateDir = "Templates";
+		string staticFilesDir = "static";
+		string buildDir = "build";
 
-var site = await SiteParser.Parse(exampleDir);//end parsing whole site.
-Generator g = new Generator(site,"../../../Templates/","../../../static","../../../build");
-await g.Generate();
+		var rootCommand = new RootCommand("CSharp By Example Runner");
+		var examplesDirOption = new Option<DirectoryInfo?>(name: "--examples");
+		examplesDirOption.AddAlias("e");
+		var templatesDirOption = new Option<DirectoryInfo?>(name: "--templates");
+		templatesDirOption.AddAlias("t");
+		var staticDirOption = new Option<DirectoryInfo?>(name: "--static");
+		staticDirOption.AddAlias("s");
+		var buildDirOption = new Option<DirectoryInfo?>(name: "--output");
+		buildDirOption.AddAlias("o");
+		
+		rootCommand.AddOption(examplesDirOption);
+		rootCommand.AddOption(templatesDirOption);
+		rootCommand.AddOption(staticDirOption);
+		rootCommand.AddOption(buildDirOption);
 
-Console.Write($"completed {site.Examples.Count} examples.");
-//the main challenge is that using CodeAnalysis gives us a tree walker to use, but separating our 'docs' from the code will require more linear, less recursive approach.
-//luckily, extending TreeWalker gives us a walk in the correct order. So we need to walk the tree, and for every node that is a comment, we can add it to a docs list, with a reference to it's associated token.
-//then, we render the code and render the comments.... and somehow find that relevant token to figure out what group or node we belong to? I think?
+		rootCommand.SetHandler(async (ex, t, s, b) =>
+		{
+			await Generate(ex, t, s, b);
+		},examplesDirOption,templatesDirOption,staticDirOption,buildDirOption);
+		
+		return await rootCommand.InvokeAsync(args);
+	}
 
+	private static async Task Generate(DirectoryInfo exampleDir, DirectoryInfo templateDir, DirectoryInfo staticFilesDir, DirectoryInfo buildDir)
+	{
+		var site = await SiteParser.Parse(exampleDir.FullName); //end parsing whole site.
+        Generator g = new Generator(site, templateDir.FullName, staticFilesDir.FullName, buildDir.FullName);
+        await g.Generate();
 
-//Hmmm, looks like maybe copying the comments out using TextSpan into docs might be the way to go.
-//or the way that gobyexample does it, which is to not use the SyntaxTree and, instead, to use regex.
-//which would, honestly, be fine. Any edge-cases we can test and re-write.
+        Console.Write($"completed {site.Examples.Count} examples.");
+	}
+}
