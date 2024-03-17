@@ -7,9 +7,9 @@ public class CSharpByExampleSiteGenerator
 {
 	public static async Task<int> Main(params string[] args)
 	{
-		string exampleDir = "./Examples";
-		string templateDir = "./Site/Templates";
-		string staticFilesDir = "./Site/static";
+		string exampleDir = "./examples";
+		string templateDir = "./site/templates";
+		string staticFilesDir = "./site/static";
 		string buildDir = "./build";
 
 		var rootCommand = new RootCommand("CSharp By Example Runner");
