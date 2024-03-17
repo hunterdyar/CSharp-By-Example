@@ -5,3 +5,7 @@ I was primarily motivated by my own students. They spend a lot of time watching 
 
 ## Suggestions
 Pull requests are welcome! I am primarily a Unity&C# developer, which can have a different way of doing things than "idiomatic" C#. I am welcome to criticism and change. I know who the site is for - my first-year undergraduate students with a semester's prior programming experience. I believe that it wil also be useful to a lot of other people too!
+
+## License
+This work is a derivative of "Go by Example" by [Mark McGranaghan](https://markmcgranaghan.com/), used under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+This work is licensed under [CC BY 4.O](https://creativecommons.org/licenses/by/4.0/)
