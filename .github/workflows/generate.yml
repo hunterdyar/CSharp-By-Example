@@ -11,12 +11,10 @@ on:
     paths: 
       - "/examples/**"
       - "**.mustache"
-    branches: [ "master" ]
   pull_request:
     paths: 
       - "examples/**"
       - "**.mustache"
-    branches: [ "master" ]
 
 permissions:
   contents: write
