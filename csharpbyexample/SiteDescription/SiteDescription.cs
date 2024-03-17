@@ -4,7 +4,6 @@ public class SiteDescription
 {
 	public string SiteName;
 	public List<ExamplePage> Examples = new List<ExamplePage>();
-
 	public void ExampleCleanup()
 	{
 		//sort by metadata

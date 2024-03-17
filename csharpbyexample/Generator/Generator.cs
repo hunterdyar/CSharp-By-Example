@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using Stubble.Helpers;
+using Stubble.Core.Loaders;
+using Stubble.Core.Builders;
 
 namespace CSharpByExample;
-using Stubble.Core.Builders;
 
 public class Generator
 {
@@ -10,6 +10,7 @@ public class Generator
 	private readonly DirectoryInfo _templateDir;
 	private readonly DirectoryInfo _buildDir;
 	private readonly DirectoryInfo _staticDir;
+	private DictionaryLoader _partialsLoader;
 	private string IndexFile => Path.Join(_buildDir.FullName, "/index.html");
 	public Generator(SiteDescription description, string templateDir, string staticDir, string buildDir)
 	{
@@ -33,8 +34,11 @@ public class Generator
 	
 	public async Task Generate()
 	{
-		//first, copy all the files from static into build
+		//Init state
+		_partialsLoader = await CreatePartialsLoader();
 		ClearFiles();
+		
+		//Generate
 		CopyStaticToBuild();
 		await GenerateIndex();
 		foreach (var example in _description.Examples)
@@ -89,37 +93,41 @@ public class Generator
 	}
 
 	async Task GenerateIndex()
-	{ var stubble = new StubbleBuilder().Build();
+	{ 
+		var stubble = new StubbleBuilder()
+			.Configure(conf=>conf.AddToPartialTemplateLoader(_partialsLoader))
+			.Build();
 		
     	using (StreamReader streamReader = new StreamReader(_templateDir+"/index.mustache", Encoding.UTF8))
     	{
     		string content = await streamReader.ReadToEndAsync();
     		string? output = await stubble.RenderAsync(content, _description);
             await File.WriteAllTextAsync(IndexFile, output);
-
         }	
 	}
 
-	public Helpers GetHelpers()
-	{
-		var helpers = new Helpers();
-		//helpers.Register("Name", (context) => context.Lookup<ExamplePage>("Name").Name);
-		return helpers;
-	}
-	private Dictionary<string,string> GetPartials()
+	private async Task<DictionaryLoader> CreatePartialsLoader()
 	{
 		var partials = new Dictionary<string, string>();
 
-		partials.Add("footer","footer.mustache");
+		foreach (var file in _templateDir.GetFiles())
+		{
+			if (file.Name == "index.mustache" || file.Name == "example.mustache")
+			{
+				continue;
+			}
+
+			var stream = new StreamReader(file.FullName);
+			partials.Add(Path.GetFileNameWithoutExtension(file.Name),await stream.ReadToEndAsync());
+		}
 		
-		return partials;
+		return new DictionaryLoader(partials);
 	}
 	//Generate a single example
 	public async Task GenerateExample(ExamplePage examplePage)
 	{
-		var helpers = GetHelpers();
 		var stubble = new StubbleBuilder()
-			.Configure(conf=>conf.AddHelpers(helpers))
+			.Configure(conf=>conf.AddToPartialTemplateLoader(_partialsLoader))
 			.Build();
 		
 		using (StreamReader streamReader = new StreamReader(_templateDir+"/example.mustache", Encoding.UTF8))
