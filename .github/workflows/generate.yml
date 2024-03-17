@@ -9,7 +9,7 @@ name: Generate Site By Example
 on:
   push:
     paths: 
-      - "/examples/**"
+      - "examples/**"
       - "**.mustache"
   pull_request:
     paths: 
