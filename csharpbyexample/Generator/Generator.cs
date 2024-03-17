@@ -36,7 +36,7 @@ public class Generator
 	{
 		//Init state
 		_partialsLoader = await CreatePartialsLoader();
-		ClearFiles();
+		InitBuildDir();
 		
 		//Generate
 		CopyStaticToBuild();
@@ -47,9 +47,16 @@ public class Generator
 		}
 	}
 
-	private void ClearFiles()
+	private void InitBuildDir()
 	{
-		ClearDirectories(_buildDir,false);	
+		if (!Directory.Exists(_buildDir.FullName))
+		{
+			Directory.CreateDirectory(_buildDir.FullName);
+		}
+		else
+		{
+			ClearDirectories(_buildDir, false);
+		}
 	}
 
 	void ClearDirectories(DirectoryInfo dir,bool deleteDir=true)
