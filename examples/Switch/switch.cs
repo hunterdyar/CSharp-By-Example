@@ -1,4 +1,7 @@
+//Switch statements can work like an if/else statement, but instead of checking every condition in order, the code execution will jump to a single branch.
+//This can be a much more efficient way to check a lot of conditions, when only one case could be true.
 public class SwitchExample {
+
 	public enum Sport
 	{
 		Football,
@@ -6,18 +9,19 @@ public class SwitchExample {
 		IceHockey,
 		Basketball
 	}
+
 	public void Main()
 	{
 
 		int i = 2;
-		//Switch statements can work like an if/else statement, but instead of checking every condition in order, the code execution will jump to a single branch.  
-		//This can be a much more efficient way to check a lot of conditions, when only one case could be true.
+
 		switch (i)
 		{
 			case 0:
 				Console.Write("Zero");
 				break;
-			case 1: //Curly braces can be included for readability in longer switch statements.
+			//Curly braces can be included for readability in longer switch statements.
+			case 1:
 			{
 				Console.Write("One");
 				break;
@@ -40,6 +44,8 @@ public class SwitchExample {
 				break;
 		}
 
+		//  
+		//
 		//It's useful to use a switch statement when working with enums.
 		Sport sport = Sport.Football;
 		string objectShape = "";
