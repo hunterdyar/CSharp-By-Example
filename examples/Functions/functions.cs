@@ -1,10 +1,10 @@
 public class FunctionExample {
     
     //Functions are named blocks of re-usable code.
-    //If a function belongs to a class, like this one does, we call it a 'Method'.
+    //If a function belongs to a class, like these do, we call it a 'Method'.
     
-    //Functions are defined much like variables: a return type then a name. After the name, we use parenthesis.
-    //The parenthesis are how C# know's it's a function. We can put 'parameters' into functions to 
+    //Functions are defined much like variables: a return type then a name. After the name, we use parentheses.
+    //The parentheses are how C# know's it's a function. Inside them, we put parameters, variables used by the function.
     public string Emphasize(string parameter)
     {
         return parameter+"!";
