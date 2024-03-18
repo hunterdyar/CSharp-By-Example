@@ -85,6 +85,13 @@ public class Generator
 	{
 		if (_staticDir.Exists)
 		{
+			//we don't use the CopyDirectory utility for all the files, because we don't want a 'static' folder in build.
+			//It would be simple enough to move that logic here and make it work,
+			foreach (var dir in _staticDir.GetDirectories())
+			{
+				Utility.CopyDirectory(dir.FullName,Path.Join(_buildDir.FullName,dir.Name),true);
+			}
+			
 			foreach (var sFile in _staticDir.GetFiles())
 			{
 				//todo: this won't copy sub-folders

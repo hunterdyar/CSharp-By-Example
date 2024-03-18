@@ -15,11 +15,7 @@ public class ExampleSegment
 		CodeEmpty = string.IsNullOrEmpty(Code);
 		if (!string.IsNullOrEmpty(Doc))
 		{
-			//todo: cache
-			//var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
-			//???
 			Doc = Doc.Trim();
-			//Doc.Replace("\n", "\r\n");
 			DocsRendered = Markdown.ToHtml(Doc);
 		}
 		else
