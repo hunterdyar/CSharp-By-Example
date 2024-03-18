@@ -1,15 +1,13 @@
-﻿using Stubble.Core.Renderers;
-
-namespace CSharpByExample;
+﻿namespace CSharpByExample;
 
 public class ExampleScript : object
 {
 	public List<ExampleSegment> Segments = new List<ExampleSegment>();
-	public string file;
+	public string File;
 
 	public ExampleScript(List<ExampleSegment> segments, string scriptFile)
 	{
 		Segments = segments;
-		file = scriptFile;
+		File = scriptFile;
 	}
 }

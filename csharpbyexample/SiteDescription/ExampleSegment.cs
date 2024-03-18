@@ -4,13 +4,12 @@ namespace CSharpByExample;
 
 public class ExampleSegment
 {
-	public string Code;
-	public string Doc;
+	public string Code = "";
+	public string Doc = "";
 	public bool CodeEmpty;
 	public bool IsLeadingSegment;
-	public string CodeRendered;
-	public string DocsRendered;
-	public string css;
+	public string CodeRendered = "";
+	public string DocsRendered = "";
 	public void Render()
 	{
 		CodeEmpty = string.IsNullOrEmpty(Code);
@@ -30,7 +29,5 @@ public class ExampleSegment
 		var formatter = new HtmlClassFormatter();
 
 		CodeRendered = formatter.GetHtmlString(Code, Languages.CSharp);
-		css = formatter.GetCSSString();
-
 	}
 }

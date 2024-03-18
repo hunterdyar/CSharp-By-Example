@@ -21,6 +21,7 @@ public class Generator
 		string exampleTemplatePath = templateDir;
 		_templateDir = new DirectoryInfo(exampleTemplatePath);
 		_description = description;
+		_partialsLoader = new DictionaryLoader(new Dictionary<string, string>());
 	}
 
 	private string GetExampleFilePath(ExamplePage page, bool createDir = true)

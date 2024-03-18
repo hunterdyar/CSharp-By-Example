@@ -10,9 +10,9 @@ public class PageParser
 	private ExamplePage _page;
 	
 	
-	private Regex blockCommentPattern = new Regex(@"\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/");
-	private Regex singleLineCommentPattern = new Regex(@"(\/\/).*");
-	private Regex selectDoubleSlash = new Regex("^\t* *(/)(/)");
+	private Regex _blockCommentPattern = new Regex(@"\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/");
+	private Regex _singleLineCommentPattern = new Regex(@"(\/\/).*");
+	private Regex _selectDoubleSlash = new Regex("^\t* *(/)(/)");
 
 	public bool ReplaceTabsWithSpaces = true;
 
@@ -32,7 +32,7 @@ public class PageParser
 			SegmentType lastSeen = SegmentType.Nothing;
 			foreach (string l in script.Split('\n'))
 			{
-				///split by /n, but need to remove /r.
+				//windows does carriage-return+newline; unix does just newline.
 				string line = l.Replace("\r","");//don't trim end, we use spaces on a new line to force p breaks.
 				if (ReplaceTabsWithSpaces)
 				{
@@ -44,8 +44,8 @@ public class PageParser
 					continue;
 				}
 				
-				var matchDocs = singleLineCommentPattern.Match(line).Success || blockCommentPattern.Match(line).Success; 
-				var matchCode = !matchDocs;
+				var matchDocs = _singleLineCommentPattern.Match(line).Success || _blockCommentPattern.Match(line).Success; 
+				//var matchCode = !matchDocs;
 
 				//it's a new stretch of comments if the previous thing was not code, or if the current segment is empty.
 				bool startDoc = lastSeen != SegmentType.Doc ||
@@ -56,7 +56,7 @@ public class PageParser
 				//if it's a comment
 				if (matchDocs)
 				{
-					var trimmed = selectDoubleSlash.Replace(line, "");
+					var trimmed = _selectDoubleSlash.Replace(line, "");
 					if (startDoc)
 					{
 						var s = new ExampleSegment();
