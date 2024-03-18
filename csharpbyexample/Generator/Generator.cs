@@ -94,8 +94,6 @@ public class Generator
 			
 			foreach (var sFile in _staticDir.GetFiles())
 			{
-				//todo: this won't copy sub-folders
-				//we already deleted the destFile
 				var destFile = Path.Join(_buildDir.FullName, sFile.Name);
 				File.Copy(sFile.FullName, destFile);
 			}

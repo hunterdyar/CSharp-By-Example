@@ -9,7 +9,6 @@ public static class SiteParser
 
 		foreach (var exampleDir in dir.GetDirectories())
 		{
-			//todo: examplePage could contain it's parser. Why not! OO prinicples involves organizing data with the methods that operate on them.
 			ExamplePage page = new ExamplePage(exampleDir.Name);
 			
 			PageParser pageParser = new PageParser(page);
@@ -21,7 +20,7 @@ public static class SiteParser
 				}
 				else
 				{
-					//todo: check if this is a script of metadata/ignored, via some syntax of some kind? 
+					//todo: check if this is a script or metadata/ignored/image/etc. 
 					//wait till we need that to bother implementing it.
 					await pageParser.Parse(script.FullName);
 				}

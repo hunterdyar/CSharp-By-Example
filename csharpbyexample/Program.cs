@@ -42,7 +42,6 @@ public class CSharpByExampleSiteGenerator
 	private static async Task Generate(DirectoryInfo exampleDir, DirectoryInfo templateDir, DirectoryInfo staticFilesDir, DirectoryInfo buildDir)
 	{
 		var site = await SiteParser.Parse(exampleDir.FullName); //end parsing whole site.
-		//todo change full name to site.
         Generator g = new Generator(site, templateDir.FullName, staticFilesDir.FullName, buildDir.FullName);
         await g.Generate();
 
