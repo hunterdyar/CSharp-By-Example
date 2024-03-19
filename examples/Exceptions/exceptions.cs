@@ -14,6 +14,7 @@ class ExceptionExamples
         return a / b;
     }
 
+    //---
     void GiveUp()
     {
         //It's considered bad practice to throw the base 'Exception' class, instead of a more specific error. 

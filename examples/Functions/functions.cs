@@ -9,7 +9,7 @@ public class FunctionExample {
     {
         return parameter+"!";
     }
-    
+    //---
     //If we don't define a scope, they are private by default.
     //If we don't return a value, we have to use the "void" placeholder as the functions return type.
     void Banana()
@@ -31,7 +31,7 @@ public class FunctionExample {
         //The names of parameters don't matter, but are important for readability.
         int sum = SumFourThings(1,2,3,4);
 
-        //  
+        //---
 
         //You can define functions inside of other functions.
         //This isn't very common.

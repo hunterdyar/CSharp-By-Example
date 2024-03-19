@@ -24,8 +24,7 @@ while (counter < 10)
 	counter++;
 }
 
-//
-//
+//---
 
 //The syntax of a counter is convenient, so there's a different type of loop that does all these parts too. It's called a for loop.
 //The for loop has the same 3 parts that were written in the previous while loop: a part that runs once at the beginning, a conditional that is checked every time, and a part that runs at the end of each loop.

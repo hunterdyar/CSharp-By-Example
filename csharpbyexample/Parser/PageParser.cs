@@ -42,8 +42,15 @@ public class PageParser
 				if (line == "")
 				{
 					continue;
+				}else if(line.Contains("//---"))
+				{
+					//This forces an empty block. It would be better if we did it manually, that's an 'eventually' todo.
+					segments.Add(new ExampleSegment());
+					segments.Add(new ExampleSegment());	
+					//skip to next!
+					continue;
 				}
-				
+					
 				var matchDocs = _singleLineCommentPattern.Match(line).Success || _blockCommentPattern.Match(line).Success; 
 				//var matchCode = !matchDocs;
 
