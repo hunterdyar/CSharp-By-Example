@@ -1,0 +1,5 @@
+Name: C# By Example
+ExampleDir: ./examples
+TemplateDir: ./site/templates
+StaticBuildDir: ./site/static
+BuildDir: ./build
