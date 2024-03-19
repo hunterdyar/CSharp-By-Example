@@ -2,10 +2,9 @@
 
 public static class SiteParser
 {
-	public static async Task<SiteDescription> Parse(string examplesDir)
+	public static async Task<SiteDescription> Parse(DirectoryInfo dir)
 	{
 		SiteDescription site = new SiteDescription();
-		DirectoryInfo dir = new DirectoryInfo(examplesDir);
 
 		foreach (var exampleDir in dir.GetDirectories())
 		{

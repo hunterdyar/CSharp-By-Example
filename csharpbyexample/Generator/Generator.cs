@@ -13,13 +13,12 @@ public class Generator
 	private readonly DirectoryInfo _draftsDir;
 	private DictionaryLoader _partialsLoader;
 	private string IndexFile => Path.Join(_buildDir.FullName, "/index.html");
-	public Generator(SiteDescription description, string templateDir, string staticDir, string buildDir)
+	public Generator(SiteDescription description, DirectoryInfo templateDir, DirectoryInfo staticDir, DirectoryInfo buildDir)
 	{
-		this._buildDir = new DirectoryInfo(buildDir);
+		this._buildDir = buildDir;
 		this._draftsDir = new DirectoryInfo(Path.Join(_buildDir.FullName, "/drafts"));
-		this._staticDir = new DirectoryInfo(staticDir);
-		string exampleTemplatePath = templateDir;
-		_templateDir = new DirectoryInfo(exampleTemplatePath);
+		this._staticDir = staticDir;
+		this._templateDir = templateDir;
 		_description = description;
 		_partialsLoader = new DictionaryLoader(new Dictionary<string, string>());
 	}
