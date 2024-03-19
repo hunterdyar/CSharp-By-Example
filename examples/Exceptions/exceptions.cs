@@ -25,6 +25,7 @@ class ExceptionExamples
     {
         if (feet < 0)
         {
+            //ArgumentException is a common exception to throw when putting checks in your code.
             throw new ArgumentException("Negative distances are not allowed.");
         }
 
@@ -33,7 +34,7 @@ class ExceptionExamples
 
     void PlaceholderFunction()
     {
-        //NotImplemented is a favorite error of mine, as I to write placeholder function names as I sketch out my ideas for a system architecture.
+        //NotImplemented is a favorite of mine. I like to write placeholder function names while sketching out ideas for system architecture.
         throw new NotImplementedException("I haven't gotten around to writing this code yet.");
     }
 }
