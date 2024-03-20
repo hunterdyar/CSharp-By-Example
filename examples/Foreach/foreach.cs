@@ -7,7 +7,17 @@ class Foo
     
     void Main()
     {
-        //you can use the keyword 'var' to let C# infer the type.
+        int[] numbers = [1,2,3,7,4,18,43,193]
+
+        //A foreach loop is a convenient way to iterate over a list.
+        //It's generally preferred over for loops, as they are easier to read.
+        //That said, they are less flexible than for loops.
+        foreach(int number in numbers)
+        {
+            Console.WriteLine($"Here is a number: {number}");
+        }
+
+        //You can use the keyword 'var' to let C# infer the type.
         foreach (var kvp in _someDictionary)
         {
             Console.WriteLine($"Key: {kvp.Key}, Val: {kvp.Value}");
