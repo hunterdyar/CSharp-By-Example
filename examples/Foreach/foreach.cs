@@ -10,7 +10,7 @@ class Foo
         int[] numbers = [1,2,3,7,4,18,43,193]
 
         //A foreach loop is a convenient way to iterate over a list.
-        //It's generally preferred over for loops, as they are easier to read.
+        //It's generally preferred over [for](../loops) loops, as they are easier to read.
         //That said, they are less flexible than for loops.
         foreach(int number in numbers)
         {
