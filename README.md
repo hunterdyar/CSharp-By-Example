@@ -24,7 +24,6 @@ This is a small project, so I don't bother caching anything, but that's an obvio
 - [MarkDig](https://github.com/xoofx/markdig) for Markdown rendering.
 - [ColorCode-Universal](https://github.com/CommunityToolkit/ColorCode-Universal) for syntax highlighting.
 - [YamlDotNet](https://github.com/aaubry/YamlDotNet/wiki) for YAML file parsing.
-- [System.CommandLine](https://github.com/dotnet/command-line-api) (preview) for command line argument parsing.
 
 ## License
 This work is a derivative of "Go by Example" by [Mark McGranaghan](https://markmcgranaghan.com/), used under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
