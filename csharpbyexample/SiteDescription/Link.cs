@@ -7,7 +7,7 @@ public class Link
 {
 	public string URL;
 	public string Name;
-
+	
 	public Link()
 	{
 		this.Name = "";

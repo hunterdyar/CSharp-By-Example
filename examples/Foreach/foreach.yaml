@@ -1,4 +1,4 @@
 Order: 12
 Links:
-    - Name: Loops
-      URL: ../loops
+    - name: Loops
+      url: ../loops
