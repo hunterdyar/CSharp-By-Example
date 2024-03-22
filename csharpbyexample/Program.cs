@@ -1,8 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using CSharpByExample;
+﻿using CSharpByExample;
 using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
 
 public class CSharpByExampleSiteGenerator
 {

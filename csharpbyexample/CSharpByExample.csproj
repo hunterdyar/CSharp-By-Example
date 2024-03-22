@@ -24,6 +24,8 @@
     <ItemGroup>
         <None Remove="code_to_analyze\**"/>
         <EmbeddedResource Remove="code_to_analyze\**" />
+        <None Remove="Highlighter\shikiWrapper.js" />
+        <EmbeddedResource Include="Highlighter\shiki.js" />
     </ItemGroup>
 
     <ItemGroup>

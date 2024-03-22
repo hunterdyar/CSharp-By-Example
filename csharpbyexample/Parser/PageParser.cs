@@ -128,7 +128,6 @@ public class PageParser
 				//.WithNamingConvention(LowerCaseNamingConvention.Instance)
 				.Build();
 			_page.Meta = deserializer.Deserialize<PageMeta>(yaml);
-			
 		}
 	}
 }

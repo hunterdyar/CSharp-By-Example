@@ -1,8 +1,7 @@
-﻿import {codeToHtml} from 'shiki/bundle/full'
-
+﻿import {codeToHtml} from 'https://esm.sh/shiki@1.0.0'
 async function Highlight(code) {
     const html = await codeToHtml(code, {
-        lang: 'javascript',
+        lang: 'csharp',
         theme: 'vitesse-dark'
     })
     return html;
