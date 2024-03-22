@@ -1,3 +1,4 @@
 Order: 11
 Links:
-    - ../foreach
+    - Name: Foreach Loops
+      URL: ../foreach
