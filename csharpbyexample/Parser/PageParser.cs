@@ -121,8 +121,10 @@ public class PageParser
 		using (StreamReader sr = new StreamReader(yamlFileInfo.FullName))
 		{
 			var yaml = await sr.ReadToEndAsync();
-			var deserializer = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance)
-				.WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+			var deserializer = new DeserializerBuilder()
+				.WithTypeInspector(n=>new IgnoreCaseTypeInspector(n))
+				//.WithNamingConvention(LowerCaseNamingConvention.Instance)
+				.Build();
 			_page.Meta = deserializer.Deserialize<PageMeta>(yaml);
 			
 		}

@@ -1,3 +1,4 @@
 Order: 3
 Links:
-    - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#logical-exclusive-or-operator-
+    - Name: XOR Operator
+      URL: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#logical-exclusive-or-operator-

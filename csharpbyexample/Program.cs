@@ -28,8 +28,9 @@ public class CSharpByExampleSiteGenerator
 		using (StreamReader sr = new StreamReader(settings.FullName))
 		{
 			var yaml = await sr.ReadToEndAsync();
-			var deserializer = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance)
-				.WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+			var deserializer = new DeserializerBuilder()
+				.WithTypeInspector(n=>new IgnoreCaseTypeInspector(n))
+				.Build();
 			siteSettings = deserializer.Deserialize<SiteSettings>(yaml);
 		}
 

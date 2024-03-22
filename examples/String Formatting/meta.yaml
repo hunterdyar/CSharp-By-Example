@@ -1,4 +1,6 @@
 Order: 5
 Links:
-    - https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
-    - https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
+    - Name: Standard Numeric Format Strings
+      URL: https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
+    - Name: Standard Date and Time Format Strings
+      URL: https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
