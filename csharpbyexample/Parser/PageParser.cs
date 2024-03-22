@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using CSharpByExample.Highlighter;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -107,12 +108,13 @@ public class PageParser
 			}
 		}
 
+		var highlighter = new PrismHighlighter();
 		foreach (var segment in segments)
 		{	
-			segment.Render();
+			segment.Render(highlighter);
 		}
 		_page.AddScript(new ExampleScript(segments,scriptFile));
-		//done! This class is basically a wraper for this function. We could just have a static function that returns the page.
+		//done! This class is basically a wrapper for this function. We could just have a static function that returns the page.
 		//That parser is used on the SiteParser. The inconsistency could be considered bad, but I'll say this is demonstrating techniques as an educational exercise. Sure.
 	}
 

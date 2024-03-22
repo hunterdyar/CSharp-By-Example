@@ -1,4 +1,5 @@
 ﻿using ColorCode;
+using CSharpByExample.Highlighter;
 using Markdig;
 namespace CSharpByExample;
 
@@ -10,7 +11,7 @@ public class ExampleSegment
 	public bool IsLeadingSegment;
 	public string CodeRendered = "";
 	public string DocsRendered = "";
-	public void Render()
+	public void Render(IHighlighter highlighter)
 	{
 		CodeEmpty = string.IsNullOrEmpty(Code);
 		if (!string.IsNullOrEmpty(Doc))
@@ -22,8 +23,11 @@ public class ExampleSegment
 		{
 			DocsRendered = "";
 		}
-		var formatter = new HtmlClassFormatter();
-
-		CodeRendered = formatter.GetHtmlString(Code, Languages.CSharp);
+		//var formatter = new HtmlClassFormatter();
+		//CodeRendered = formatter.GetHtmlString(Code, Languages.CSharp);
+		if (Code != "")
+		{
+			CodeRendered = highlighter.Highlight(Code);
+		}
 	}
 }
