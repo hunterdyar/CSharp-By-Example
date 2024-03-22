@@ -27,11 +27,14 @@ public enum Rank
     King = 13,
     Ace = 1,
 }
+//---
 
+//In this example, consider how this class, representing a single playing card, takes advantage of enums for code that is easy to read.
 public class Card
 {
     public Suit Suit;
     public Rank Rank;
+
     public bool MatchesColor(Suit otherSuit)
     {
         switch (otherSuit)
@@ -51,10 +54,10 @@ public class Card
     {
         return (int)Rank - (int)otherCard.Rank == 1;
     }
-    
-    public bool CanKlondikeStackOn(Card otherCard)
-    {
-        return !MatchesColor(otherCard.Suit) && IsOneGreaterThan(otherCard);
-    }
+
+public bool CanKlondikeStackOn(Card otherCard)
+{
+    return !MatchesColor(otherCard.Suit) && IsOneGreaterThan(otherCard);
+}
 
 }
