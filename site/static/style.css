@@ -27,7 +27,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-
+.wip{
+    background: hsl(53, 89%, 79%);
+}
 blockquote, q {
 	quotes: none;
 }
@@ -98,7 +100,7 @@ div#intro {
     margin-bottom: 120px;
 }
 div#intro p {
-    padding-top: 20px;
+    margin-top: 20px;
 }
 div#intro ul {
     padding-top: 20px;
