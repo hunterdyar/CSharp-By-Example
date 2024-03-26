@@ -1,8 +1,4 @@
-﻿//start comment.  
-//this is header data.
-
-//main
-public void Main() {
+﻿public void Main() {
     //Here is a basic example if an if/else statement.
     //In C#, we need parenthesis after the if statement, and curly braces for the code.
     if(7%2 == 0){
@@ -43,7 +39,3 @@ public void Main() {
         Console.WriteLine(num, "has multiple digits")
     }
 }
-
-
-//now footer data
-//down here.

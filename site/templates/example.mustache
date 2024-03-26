@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>C# by Example: {{Name}}</title>
-    <link rel=stylesheet href="../style.css" />
     <link rel=stylesheet href="../prism.css" />
+    <link rel=stylesheet href="../style.css" />
 </head>
 <script>
     onkeydown = (e) => {
@@ -24,23 +24,22 @@
 <div class="example" id="{{ID}}">
     <h2><a href="../">C# by Example</a>: {{Name}}</h2>
 {{#Scripts}}
-<Table> 
+<Section class="example">
 {{#Segments}}
-<tr>
-    <td class="docs">
-        {{{DocsRendered}}}
-    </td>
-<td class="code{{#CodeEmpty}} empty{{/CodeEmpty}}{{#CodeLeading}} leading{{/CodeLeading}}">
+<div class="docs grid-left">
+    {{{DocsRendered}}}
+</div>
+<div class="code{{#CodeEmpty}} empty{{/CodeEmpty}}{{#CodeLeading}} leading{{/CodeLeading}} grid-right">
 {{end}}
 <pre class="language-cs">
 <code>
 {{{CodeRendered}}}
 </code>
 </pre>
-</td>
-</tr>
+</div>
+
 {{/Segments}}
-</table>
+</Section>
 {{/Scripts}}
     {{#Meta.HasLinks}}
         <h3>Further:</h3>
