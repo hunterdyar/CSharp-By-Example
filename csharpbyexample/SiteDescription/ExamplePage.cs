@@ -20,4 +20,20 @@ public class ExamplePage : object
 	{
 		this.Scripts.Add(exampleScript);
 	}
+
+	public void SetMeta(PageMeta meta)
+	{
+		Meta = meta;
+		
+		//optional setting overrides
+		if (meta.Title != "")
+		{
+			Name = meta.Title;
+		}
+
+		if (meta.slug != "")
+		{
+			ID = meta.slug;
+		}
+	}
 }
