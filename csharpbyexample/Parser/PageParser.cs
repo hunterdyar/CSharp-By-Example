@@ -125,7 +125,7 @@ public class PageParser
 				.WithTypeInspector(n=>new IgnoreCaseTypeInspector(n))
 				//.WithNamingConvention(LowerCaseNamingConvention.Instance)
 				.Build();
-			_page.Meta = deserializer.Deserialize<PageMeta>(yaml);
+			_page.SetMeta(deserializer.Deserialize<PageMeta>(yaml));
 			
 		}
 	}
