@@ -17,13 +17,14 @@
     if(21%3 == 0)
        Console.WriteLine("21 is divisible by 3");
    
-   //Consider the following situation. Both lines look like they are part of the if statement, but they aren't. Without curly braces, the if statement conditionally executes only a single following statement.
-    // 
+    //Consider the following situation. Both lines look like they are part of the if statement, but they aren't. Without curly braces, the if statement conditionally executes only a single following statement.  
+    //  
     //Because of this common mistake, I advise beginners to always use curly braces.
     if(false)
         Console.WriteLine("This line is part of the if statement.");
-        Console.WriteLine("THis line is not. It will be executed no matter what is in the conditional.");
+        Console.WriteLine("This line is not. It will be executed no matter what is in the conditional.");
 
+    //---
     //C# has conditional operators like && for "[and](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-)" and || for "[or](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-or-operator-)".
     if(8%2 == 0 || 7%2 == 0) {
         Console.WriteLine("either 8 or 7 are even")
