@@ -17,7 +17,5 @@ public struct SiteSettings
 		StaticBuildInfo = new DirectoryInfo(StaticBuildDir);
 		ExampleDirInfo = new DirectoryInfo(ExampleDir);
 		TemplateDirInfo = new DirectoryInfo(TemplateDir);
-		
-		//validate?
 	}
 }
