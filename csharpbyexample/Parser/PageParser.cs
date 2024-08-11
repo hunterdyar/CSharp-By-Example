@@ -9,7 +9,7 @@ public class PageParser
 {
 	public ExamplePage Page => _page;
 	private ExamplePage _page;
-	
+	private IHighlighter _highlighter;
 	
 	private Regex _blockCommentPattern = new Regex(@"\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/");
 	private Regex _singleLineCommentPattern = new Regex(@"(\/\/).*");
@@ -18,9 +18,10 @@ public class PageParser
 	public bool ReplaceTabsWithSpaces = true;
 
 	//Parses a script into an ExampleScript and adds it to a given Example Page.
-	public PageParser(ExamplePage page)
+	public PageParser(ExamplePage page, IHighlighter highlighter)
 	{
 		_page = page;
+		_highlighter = highlighter;
 	}
 
 	public async Task Parse(string scriptFile)
@@ -108,10 +109,9 @@ public class PageParser
 			}
 		}
 
-		var highlighter = new PrismHighlighter();
 		foreach (var segment in segments)
 		{	
-			segment.Render(highlighter);
+			segment.Render(_highlighter);
 		}
 		_page.AddScript(new ExampleScript(segments,scriptFile));
 		//done! This class is basically a wrapper for this function. We could just have a static function that returns the page.

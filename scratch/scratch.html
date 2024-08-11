@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>C# by Example: Functions</title>
+<!--    <link rel=stylesheet href="../style.css" />-->
+<!--    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">-->
+<!--    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">-->
+<!--    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">-->
+<!--    <link rel="manifest" href="/site.webmanifest">-->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+<!--    <link rel=stylesheet href="../prism.css" />-->
+<!--    <link rel=stylesheet href="../style.css" />-->
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: "text code";
+            column-gap: 20px;
+        }
+        .text{
+            grid-area: text;
+            justify-self: end;
+            /*place-self: center stretch;*/
+            overflow: hidden;
+            min-width: 100px;
+        }
+        .code{
+            grid-area: code;
+            justify-self: start;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <article class="pa3 mw8 center">
+    <h2 class="f2">C# by Example: Functions</h2>
+        <div class="container">
+            <div class="text">
+                <p>Functions are named blocks of re-usable code. If a function belongs to a class, like these do, we call it a 'Method'.</p>
+            </div>
+            <pre class="code">
+<code>public class FunctionExample {
+
+public string Emphasize(string parameter)
+{
+    return parameter+"!";
+}
+
+}
+
+</code>
+            </pre>
+        </div>
+    </article>
+</div>
+</body>
+<script data-goatcounter="https://csharpbyexample.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script></body>
+</html>
+//https://muffinman.io/blog/get-lines-of-text-from-html-element/

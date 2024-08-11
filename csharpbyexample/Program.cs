@@ -32,8 +32,8 @@ public class CSharpByExampleSiteGenerator
 		}
 
 		siteSettings.GetDirectoryInfo();
-
-		var site = await SiteParser.Parse(siteSettings.ExampleDirInfo); //end parsing whole site.
+		var highlighter = siteSettings.GetHighlighter();
+		var site = await SiteParser.Parse(siteSettings.ExampleDirInfo, highlighter); //end parsing whole site.
         Generator g = new Generator(site, siteSettings.TemplateDirInfo, siteSettings.StaticBuildInfo, siteSettings.BuildDirInfo);
         await g.Generate();
 

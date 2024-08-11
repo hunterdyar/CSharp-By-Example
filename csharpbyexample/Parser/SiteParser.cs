@@ -1,8 +1,10 @@
-﻿namespace CSharpByExample;
+﻿using CSharpByExample.Highlighter;
+
+namespace CSharpByExample;
 
 public static class SiteParser
 {
-	public static async Task<SiteDescription> Parse(DirectoryInfo dir)
+	public static async Task<SiteDescription> Parse(DirectoryInfo dir, IHighlighter highlighter)
 	{
 		SiteDescription site = new SiteDescription();
 
@@ -10,7 +12,7 @@ public static class SiteParser
 		{
 			ExamplePage page = new ExamplePage(exampleDir.Name);
 			
-			PageParser pageParser = new PageParser(page);
+			PageParser pageParser = new PageParser(page, highlighter);
 			foreach (var script in exampleDir.GetFiles())
 			{
 				if (script.Extension == ".yaml")

@@ -3,3 +3,4 @@ ExampleDir: ./examples
 TemplateDir: ./site/templates
 StaticBuildDir: ./site/static
 BuildDir: ./build
+Highlighter: "prism"
