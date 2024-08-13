@@ -70,12 +70,15 @@ h3{
     margin-top: 15px;
 }
 div.example {
+
+    margin-bottom: 120px;
+}
+.center-col {
     width: 960px;
     min-width: 960px;
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 120px;
 }
 section.example {
     margin-top: 15px;
@@ -110,6 +113,9 @@ div#intro ul {
     min-height: 5px;
     vertical-align: top;
     text-align: left;
+    padding-left:45%;
+    max-width: 50rem;
+    min-width: 20rem;
 }
 .docs p {
     padding-right: 5px;
@@ -150,5 +156,6 @@ section.example{
 }
 .grid-right{
     grid-column: 2;
-    overflow: hidden;
+    overflow: scroll;
+    background-color: grey;
 }
